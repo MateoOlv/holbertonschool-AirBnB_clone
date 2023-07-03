@@ -1,7 +1,7 @@
 <h1 align="center">AirBnB - Project at Holberton School</h1>
 <br>
 
-The project consists of developing a clone of Airbnb, an online platform that allows users to find and book accommodations in different locations around the world. The main objective is to provide users with an Airbnb-like experience, where they can search, compare and book accommodations easily and securely.
+Welcome to the first project of AirBnB clone, this project consists of developing a console of AirBnb from scratch, that allows users to search, create and manage models.
 
 ![AirBnB](https://github.com/JeremiasInCode/holbertonschool-AirBnB_clone/assets/80486569/dce407ed-aafa-4741-8019-bdb02936665b)'
 
