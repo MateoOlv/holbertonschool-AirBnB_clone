@@ -7,14 +7,14 @@ Welcome to the first project of AirBnB clone, this project consists of developin
 
 <br>
 
-## Requirements
+# Requirements
 
 To use this command-line interpreter, you will need:
 
-# Python 3.6 or later.
+## Python 3.6 or later.
 - The interpreter is built using Python programming language. Therefore, it is essential to have Python 3.6 or a later version installed on your system. You can download and install Python from the official Python website (https://www.python.org) or use a package manager specific to your operating system.
   
-# Basic console knowledge.
+## Basic console knowledge.
 - Familiarity with basic console operations is necessary to navigate and interact with the command-line interpreter. You should be comfortable with executing commands, navigating directories, and managing files using the command prompt or terminal of your operating system.
 
 <br>
