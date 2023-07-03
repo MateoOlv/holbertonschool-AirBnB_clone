@@ -3,6 +3,7 @@ import uuid
 import datetime
 
 
+
 class BaseModel:
     """ A class representing a BaseModel """
     def __init__(self):
