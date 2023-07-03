@@ -5,10 +5,10 @@ import datetime
 
 class BaseModel:
     """ A class representing a BaseModel """
-    def __init__(self):
+    def __init__(self, *args, **kw):
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
-        self.update_at = self.created_at
+        self.updated_at = self.created_at
 
     def __str__(self):
         """ return [<class name>] (<self.id>) <self.__dict__> """
