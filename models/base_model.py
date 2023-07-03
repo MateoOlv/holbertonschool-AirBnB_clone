@@ -8,11 +8,15 @@ class BaseModel:
     def __init__(self):
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
+        self.update_at = self.created_at
 
     def __str__(self):
-        pass
+        """ return [<class name>] (<self.id>) <self.__dict__> """
+        return f"[{self.__class__.__name__} ({self.id}) ({self.__dict__})]"
 
     def save(self):
-        pass
+        """ Update date of update_at """
+        self.update_at = datetime.now()
 
     def to_dict(self):
+        pass
