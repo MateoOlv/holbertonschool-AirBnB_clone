@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Imports"""
 import uuid
-import datetime
+from datetime import datetime
 
 
 class BaseModel:
@@ -20,4 +20,10 @@ class BaseModel:
         self.update_at = datetime.now()
 
     def to_dict(self):
-        pass
+        """ Return a dictionary representation of a instance"""
+
+        new_dict = self.__dict__.copy()
+        new_dict['__name__'] = self.__class__.__name__
+        new_dict['created_at'] = self.created_at.isoformat()
+        new_dict['update_at'] = self.update_at.isoformat()
+        return new_dict
