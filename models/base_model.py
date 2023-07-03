@@ -11,9 +11,12 @@ class BaseModel:
         self.updated_at = self.created_at
 
     def __str__(self):
-        pass
+        """ return [<class name>] (<self.id>) <self.__dict__> """
+        return f"[{self.__class__.__name__} ({self.id}) ({self.__dict__})]"
 
     def save(self):
-        pass
+        """ Update date of update_at """
+        self.update_at = datetime.now()
 
     def to_dict(self):
+        pass
