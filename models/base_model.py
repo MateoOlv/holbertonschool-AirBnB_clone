@@ -6,6 +6,7 @@ from datetime import datetime
 
 class BaseModel:
     """ A class representing a BaseModel """
+
     def __init__(self):
         """init values"""
         self.id = str(uuid.uuid4())
@@ -22,8 +23,8 @@ class BaseModel:
 
     def to_dict(self):
         """ Return a dictionary representation of a instance"""
-        dict_copy = self.__dict__
-        dict_copy['__class__'] = self.__class__.__name__
-        dict_copy['created_at'] = str(self.created_at.isoformat())
-        dict_copy['update_at'] = str(self.update_at.isoformat())
-        return dict_copy
+        data = self.__dict__.copy()
+        data['__class__'] = self.__class__.__name__
+        data['created_at'] = self.created_at.isoformat()
+        data['updated_at'] = self.updated_at.isoformat()
+        return data
