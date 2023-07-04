@@ -11,6 +11,20 @@ class TestBaseModel(unittest.TestCase):
 
     def tearDown(self):
         del self.model
+    
+    def testKwargs(self):
+        """ Test Kwargs - Representation """
+        test_k = {
+            'id': '323',
+            'created_at': '2023-01-22T22:00:00.000000',
+            'update_at': '2023-01-22T22:00:00.000000'
+        }
+        model = BaseModel(**test_k)
+        self.assertEqual(model.id, '323')
+        self.assertEqual(model.created_at, datetime.strptime(
+                '2023-01-22T22:00:00.000000', '%Y-%m-%dT%H:%M:%S.%f'))
+        self.assertEqual(model.update_at, datetime.strptime(
+                '2023-01-22T22:00:00.000000', '%Y-%m-%dT%H:%M:%S.%f'))
 
     """ Test types of attributes """
     def testAttributesId(self):
@@ -29,7 +43,9 @@ class TestBaseModel(unittest.TestCase):
     def testStrMethod(self):
         """ Representation """
         datad = self.model.__class__.__name__
-        string = "[{}] ({}) {}".format(datad, self.model.id, self.model.__dict__)
+        dataId = self.model.id
+        dataDict = self.model.__dict__
+        string = "[{}] ({}) {}".format(datad, dataId, dataDict)
         self.assertEqual(str(self.model), string)
 
     def testSaveMethod(self):
@@ -43,8 +59,11 @@ class TestBaseModel(unittest.TestCase):
         dict_model = self.model.to_dict()
         self.assertIsInstance(dict_model, dict)
         self.assertEqual(dict_model['__class__'], "BaseModel")
-        self.assertIsInstance(datetime.strptime(dict_model['created_at'], '%Y-%m-%dT%H:%M:%S.%f'), datetime)
-        self.assertIsInstance(datetime.strptime(dict_model['updated_at'], '%Y-%m-%dT%H:%M:%S.%f'), datetime)
+        format = '%Y-%m-%dT%H:%M:%S.%f'
+        create_ex = (dict_model['created_at'], format)
+        update_ex = (dict_model['updated_at'], format)
+        self.assertIsInstance(datetime.strptime(create_ex, datetime))
+        self.assertIsInstance(datetime.strptime(update_ex, datetime))
 
     if __name__ == "__main__":
         unittest.main()
