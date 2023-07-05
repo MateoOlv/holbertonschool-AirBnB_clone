@@ -7,6 +7,7 @@ import cmd
 
 
 class HBNBCommand(cmd.Cmd):
+    """ HBNB command """
     prompt = '(hbnb) '
 
     def do_quit(self, arg):
@@ -31,5 +32,6 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
-    if __name__ == '__main__':
-        HBNBCommand().cmdloop()
+
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
