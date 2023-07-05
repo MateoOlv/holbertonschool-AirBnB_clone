@@ -1,7 +1,9 @@
 #!/usr/bin/python3
+
 """
 Command interpreter.
 Imports
+
 """
 import cmd
 
