@@ -6,7 +6,6 @@ Imports
 
 """
 import cmd
-import json
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 storage = FileStorage()
@@ -99,8 +98,30 @@ class HBNBCommand(cmd.Cmd):
             key = "{}.{}".format(args[0], args[1])
             if key not in storage.all():
                 print("** no instance found **")
-            del storage.all()[key]
-            storage.save()
+            else:
+                del storage.all()[key]
+                storage.save()
+
+    def do_all(self, arg):
+        """
+            Prints all string representation of all instances
+            based or not on the class name.
+        """
+        args = arg.split()
+        if not args:
+            instances = storage.all()
+            for key, value in instances.items():
+                strPrint = str(value)
+                print(strPrint)
+        elif args[0] not in self.classes:
+            print("** class doesn't exist **")
+        else:
+            class_name = args[0]
+            instances = storage.all()
+            for key, instance in instances.items():
+                if key.startswith(class_name + '.'):
+                    strPrint = str(instance)
+                    print(strPrint)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
