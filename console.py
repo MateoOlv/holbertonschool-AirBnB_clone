@@ -8,10 +8,8 @@ Imports
 import cmd
 import json
 from models.engine.file_storage import FileStorage
-storage = FileStorage()
-
-""" Classes """
 from models.base_model import BaseModel
+storage = FileStorage()
 
 
 class HBNBCommand(cmd.Cmd):
@@ -68,7 +66,8 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         """
             do_show()
-            Prints the string representation of an instance based on the class name and id.
+            Prints the string representation of an instance based
+            on the class name and id.
         """
         args = arg.split()
         if not arg:
@@ -82,7 +81,7 @@ class HBNBCommand(cmd.Cmd):
             if key not in storage.all():
                 print("** no instance found **")
             print(storage.all()[key])
-            
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
