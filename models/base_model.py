@@ -23,7 +23,7 @@ class BaseModel:
                     if key == "update_at" or key == "created_at":
                         value = datetime.strptime(
                             value, "%Y-%m-%dT%H:%M:%S.%f")
-                        setattr(self, key, value)
+                    setattr(self, key, value)
 
     def __str__(self):
         """Str return"""
