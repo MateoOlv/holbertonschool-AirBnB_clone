@@ -26,6 +26,14 @@ class HBNBCommand(cmd.Cmd):
         "Review"
     }
 
+    messagesValues = {
+        'missingClass': '** class name missing **',
+        'missingValue': '** value missing **',
+        'missingID': '** instance id missing **',
+        'missingAttribute': '** attribute name missing **',
+        'dontExistsClass': "** class doesn't exist **"
+    }
+
     def do_quit(self, arg):
         """
             do_quit().
@@ -54,9 +62,9 @@ class HBNBCommand(cmd.Cmd):
             Creates a new instance of BaseModel, saves it (to the JSON file).
         """
         if not arg:
-            print("** class name missing **")
+            print(self.messagesValues['missingClass'])
         elif arg not in self.classes:
-            print("** class doesn't exist **")
+            print(self.messagesValues['dontExistsClass'])
         else:
             objClassName = globals().get(arg)
             instance = objClassName()
@@ -72,15 +80,15 @@ class HBNBCommand(cmd.Cmd):
         """
         args = split(arg)
         if not arg:
-            print("** class name missing **")
+            print(self.messagesValues['missingClass'])
         elif args[0] not in self.classes:
-            print("** class doesn't exist **")
+            print(self.messagesValues['dontExistsClass'])
         elif len(args) < 2:
-            print("** instance id missing **")
+            print(self.messagesValues['missingID'])
         else:
             key = "{}.{}".format(args[0], args[1])
             if key not in storage.all():
-                print("** no instance found **")
+                print(self.messagesValues['dontExistsID'])
             print(storage.all()[key])
 
     def do_destroy(self, arg):
@@ -91,15 +99,15 @@ class HBNBCommand(cmd.Cmd):
         """
         args = split(arg)
         if not arg:
-            print("** class name missing **")
+            print(self.messagesValues['missingClass'])
         elif args[0] not in self.classes:
-            print("** class doesn't exist **")
+            print(self.messagesValues['dontExistsClass'])
         elif len(args) < 2:
-            print("** instance id missing **")
+            print(self.messagesValues['missingID'])
         else:
             key = "{}.{}".format(args[0], args[1])
             if key not in storage.all():
-                print("** no instance found **")
+                print(self.messagesValues['dontExistsID'])
             else:
                 del storage.all()[key]
                 storage.save()
@@ -116,7 +124,7 @@ class HBNBCommand(cmd.Cmd):
                 strPrint = str(value)
                 print(strPrint)
         elif args[0] not in self.classes:
-            print("** class doesn't exist **")
+            print(self.messagesValues['dontExistsClass'])
         else:
             class_name = args[0]
             instances = storage.all()
@@ -131,28 +139,31 @@ class HBNBCommand(cmd.Cmd):
             adding or updating attribute saved the change into the JSON file.
         """
         args = arg.split()
-        class_name = args[0]
-        instance_id = args[1]
-        attribute_name = args[2]
-        attribute_value = args[3]
         if not arg:
-            print("** class name missing **")
-        elif class_name not in self.classes:
-            print("** class doesn't exist **")
+            print(self.messagesValues['missingClass'])
+        elif args[0] not in self.classes:
+            print(self.messagesValues['dontExistsClass'])
         elif len(args) == 1:
-            print("** instance id missing **")
+            print(self.messagesValues['missingID'])
         elif len(args) == 2:
-            print("** Attribute name missing **")
+            print(self.messagesValues['missingAttribute'])
         elif len(args) == 3:
-            print("** Value missing **")
+            print(self.messagesValues['missingValue'])
         else:
-            key = "{}.{}".format(class_name, instance_id)
+            className = args[0]
+            instanceID = args[1]
+            attributeName = args[2]
+            attributeValue = args[3]
+            key = "{}.{}".format(className, instanceID)
             if key not in storage.all():
                 print("** no instance found **")
             else:
                 objectAttribute = storage.all()[key]
-                setattr(objectAttribute, attribute_name, attribute_value)
-                storage.save()
+                if hasattr(objectAttribute, attributeName):
+                    setattr(objectAttribute, attributeName, attributeValue)
+                    storage.save()
+                else:
+                    print("** attribute doesn't exist **")
 
 
 if __name__ == '__main__':
