@@ -21,8 +21,9 @@ class FileStorage:
         """
         new
         """
-        name = obj.__class__.__name__
-        FileStorage.__objects[name + '.' + obj.id] = obj
+        if obj is not None:
+            name = obj.__class__.__name__
+            FileStorage.__objects[name + '.' + obj.id] = obj
 
     def save(self):
         """
