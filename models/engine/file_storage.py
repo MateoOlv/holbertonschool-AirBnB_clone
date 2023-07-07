@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import os.path
+import os
 import json
 from models.base_model import BaseModel
 from models.user import User
@@ -41,10 +41,10 @@ class FileStorage:
         Reload
         """
         try:
-            with open(FileStorage.__file_path, 'r') as jsonfile:
-                jData = json.load(jsonfile)
-                for key, obj in jData.items():
-                    self.new(setattr(self, 'new', eval(
-                        obj['__class__'])(**obj)))
+            with open(self.__file_path, 'r') as f:
+                data = json.load(f)
+                for key, obj in data.items():
+                    newObj = eval(obj['__class__'])(**obj)
+                    self.__objects[key] = newObj
         except FileNotFoundError:
-            return
+            pass

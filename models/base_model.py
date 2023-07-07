@@ -11,15 +11,15 @@ import models
 
 
 class BaseModel:
+
     def __init__(self, *args, **kwargs):
         """Init Value"""
-        if kwargs is not None:
+        if kwargs:
             for key, value in kwargs.items():
-
-                if key == "update_at" or key == "created_at":
-                    value = datetime.strptime(
-                        value, "%Y-%m-%dT%H:%M:%S.%f")
                 if key != "__class__":
+                    if key == "created_at" or key == "updated_at":
+                        value = datetime.strptime(
+                            value, '%Y-%m-%dT%H:%M:%S.%f')
                     setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
@@ -40,7 +40,6 @@ class BaseModel:
     def to_dict(self):
         """Dict values"""
         data = self.__dict__.copy()
-
         data['__class__'] = self.__class__.__name__
         data['created_at'] = self.created_at.isoformat()
         data['updated_at'] = self.updated_at.isoformat()
