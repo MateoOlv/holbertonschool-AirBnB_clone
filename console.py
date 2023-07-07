@@ -1,22 +1,25 @@
 #!/usr/bin/python3
-
 """
 Command interpreter.
 Imports
-
 """
 import cmd
 from shlex import split
-from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+from models.engine.file_storage import FileStorage
 storage = FileStorage()
 
 
 class HBNBCommand(cmd.Cmd):
     """ HBNB command """
     prompt = '(hbnb) '
-    classes = {
+    classes = [
         "BaseModel",
         "User",
         "State",
@@ -24,8 +27,7 @@ class HBNBCommand(cmd.Cmd):
         "Amenity",
         "Place",
         "Review"
-    }
-
+    ]
     messagesValues = {
         'missingClass': '** class name missing **',
         'missingValue': '** value missing **',
