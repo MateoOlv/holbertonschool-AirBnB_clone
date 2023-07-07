@@ -128,11 +128,9 @@ class HBNBCommand(cmd.Cmd):
         elif args[0] not in self.classes:
             print(self.messagesValues['dontExistsClass'])
         else:
-            class_name = args[0]
             instances = storage.all()
-            filtered_instances = [str(elem) for key, elem in instances.items()]
-            for strElement in filtered_instances:
-                print(strElement)
+            for i in [str(instance) for key, instance in instances.items()]:
+                print(i)
 
     def do_update(self, arg):
         """
