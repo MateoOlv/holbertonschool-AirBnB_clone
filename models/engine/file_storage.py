@@ -2,6 +2,7 @@
 import os.path
 import json
 from models.base_model import BaseModel
+from models.user import User
 """Import
 """
 
@@ -32,7 +33,7 @@ class FileStorage:
         for key, value in FileStorage.__objects.items():
             jData[key] = value.to_dict()
         with open(FileStorage.__file_path, 'w') as f:
-            data = json.dump(jData, f)
+            json.dump(jData, f)
 
     def reload(self):
         """
