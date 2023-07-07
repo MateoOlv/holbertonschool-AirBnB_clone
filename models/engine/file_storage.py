@@ -5,6 +5,8 @@ from models.user import User
 
 
 class FileStorage:
+    """ FileStorage class"""
+
     __file_path = "file.json"
     __objects = {}
 
@@ -14,9 +16,8 @@ class FileStorage:
 
     def new(self, obj):
         """ sets in __objects the obj with key <obj class name>.id """
-        if obj is not None and hasattr(obj, 'id'):
-            name = f"{obj.__class__.__name__}.{obj.id}"
-            FileStorage.__objects[name] = obj
+        name = f"{obj.__class__.__name__}.{obj.id}"
+        FileStorage.__objects[name] = obj
 
     def save(self):
         """ serializes __objects to the JSON file (path: __file_path) """
