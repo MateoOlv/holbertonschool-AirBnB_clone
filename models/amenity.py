@@ -1,8 +1,6 @@
 #!/usr/bin/python3
+""" Class Amenity """
 from models.base_model import BaseModel
-"""
-Class Amenity
-"""
 
 
 class Amenity(BaseModel):

@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-Imports
-"""
+""" Imports """
 import uuid
 from datetime import datetime
 import models

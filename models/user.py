@@ -1,8 +1,6 @@
 #!/usr/bin/python3
+""" Class User """
 from models.base_model import BaseModel
-"""
-Class User
-"""
 
 
 class User(BaseModel):
