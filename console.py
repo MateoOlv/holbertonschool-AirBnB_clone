@@ -129,10 +129,9 @@ class HBNBCommand(cmd.Cmd):
         else:
             class_name = args[0]
             instances = storage.all()
-            for key, instance in instances.items():
-                if key.startswith(class_name + '.'):
-                    strPrint = str(instance)
-                    print(strPrint)
+            filtered_instances = [str(instance) for key, instance in instances.items()]
+            for strElement in filtered_instances:
+                print(strElement)
 
     def do_update(self, arg):
         """
