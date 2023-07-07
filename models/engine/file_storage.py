@@ -41,10 +41,10 @@ class FileStorage:
         Reload
         """
         try:
-            with open(self.__file_path, 'r') as f:
+            with open(FileStorage.__file_path, 'r') as f:
                 data = json.load(f)
                 for key, obj in data.items():
                     newObj = eval(obj['__class__'])(**obj)
-                    self.__objects[key] = newObj
+                    FileStorage.__objects[key] = newObj
         except FileNotFoundError:
             pass
