@@ -6,8 +6,10 @@ Imports
 
 """
 import cmd
+from shlex import split
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
+from models.user import User
 storage = FileStorage()
 
 
@@ -68,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
             Prints the string representation of an instance based
             on the class name and id.
         """
-        args = arg.split()
+        args = split(arg)
         if not arg:
             print("** class name missing **")
         elif args[0] not in self.classes:
@@ -87,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
             Deletes an instance based on the class name and id
             (save the change into the JSON file).
         """
-        args = arg.split()
+        args = split(arg)
         if not arg:
             print("** class name missing **")
         elif args[0] not in self.classes:
@@ -107,7 +109,7 @@ class HBNBCommand(cmd.Cmd):
             Prints all string representation of all instances
             based or not on the class name.
         """
-        args = arg.split()
+        args = split(arg)
         if not args:
             instances = storage.all()
             for key, value in instances.items():
@@ -125,33 +127,33 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """
-            Updates an instance based on the class name
-            and id by adding or updating attribute.
+            Updates an instance based on the class name and id by
+            adding or updating attribute saved the change into the JSON file.
         """
         args = arg.split()
-        className = args[0]
-        classID = args[1]
-        classAttribute = args[2]
-        classValue = args[3]
-
-        print("Args:", args)
-        print("ClassName", className)
-        print("ClassID", classID)
-        print("ClassAttribute", classAttribute)
-        print("ClassValue", classValue)
-
+        class_name = args[0]
+        instance_id = args[1]
+        attribute_name = args[2]
+        attribute_value = args[3]
         if not arg:
             print("** class name missing **")
-        elif args[0] not in self.classes:
+        elif class_name not in self.classes:
             print("** class doesn't exist **")
-        elif len(arg) < 2:
+        elif len(args) == 1:
             print("** instance id missing **")
-        elif len(arg) < 4:
-            print("** Missing arguments **")
+        elif len(args) == 2:
+            print("** Attribute name missing **")
+        elif len(args) == 3:
+            print("** Value missing **")
         else:
-            key = "{}.{}".format(args[0], args[1])
+            key = "{}.{}".format(class_name, instance_id)
             if key not in storage.all():
                 print("** no instance found **")
+            else:
+                objectAttribute = storage.all()[key]
+                setattr(objectAttribute, attribute_name, attribute_value)
+                storage.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

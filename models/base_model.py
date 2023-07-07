@@ -7,29 +7,6 @@ from datetime import datetime
 import models
 
 
-
-"""
-    BaseModel class.
-
-    Attributes:
-    id: identifier
-    created_at: date and time of creation.
-    update_at: date and time of update.
-
-    __str__() - method:
-    - Rewrite __str__ method.
-
-    save() - method:
-    - Update the date of created.
-
-    to_dict() - method:
-    - To create a dictionary that it contain:
-      . All attributes of class.
-      . Name of class.
-      . created_at attribute in ISO format.
-      . instance_at attribute in ISO format.
-"""
-
 """BaseModel Module"""
 
 
