@@ -6,8 +6,10 @@ Imports
 
 """
 import cmd
+from shlex import split
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
+from models.user import User
 storage = FileStorage()
 
 
@@ -68,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
             Prints the string representation of an instance based
             on the class name and id.
         """
-        args = arg.split()
+        args = split(arg)
         if not arg:
             print("** class name missing **")
         elif args[0] not in self.classes:
@@ -87,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
             Deletes an instance based on the class name and id
             (save the change into the JSON file).
         """
-        args = arg.split()
+        args = split(arg)
         if not arg:
             print("** class name missing **")
         elif args[0] not in self.classes:
@@ -107,7 +109,7 @@ class HBNBCommand(cmd.Cmd):
             Prints all string representation of all instances
             based or not on the class name.
         """
-        args = arg.split()
+        args = split(arg)
         if not args:
             instances = storage.all()
             for key, value in instances.items():
@@ -122,6 +124,7 @@ class HBNBCommand(cmd.Cmd):
                 if key.startswith(class_name + '.'):
                     strPrint = str(instance)
                     print(strPrint)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
