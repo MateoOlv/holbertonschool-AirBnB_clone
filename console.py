@@ -148,6 +148,10 @@ class HBNBCommand(cmd.Cmd):
             self.update_logic(args)
 
     def update_logic(self, args):
+        """
+            Function that makes the logic for
+            set the attributes.
+        """
         class_name = args[0]
         instance_id = args[1]
         attribute_name = args[2]
