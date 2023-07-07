@@ -31,7 +31,8 @@ class HBNBCommand(cmd.Cmd):
         'missingValue': '** value missing **',
         'missingID': '** instance id missing **',
         'missingAttribute': '** attribute name missing **',
-        'dontExistsClass': "** class doesn't exist **"
+        'dontExistsClass': "** class doesn't exist **",
+        'dontExistsID': '** no instance found **',
     }
 
     def do_quit(self, arg):
@@ -150,20 +151,17 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 3:
             print(self.messagesValues['missingValue'])
         else:
-            className = args[0]
-            instanceID = args[1]
-            attributeName = args[2]
-            attributeValue = args[3]
-            key = "{}.{}".format(className, instanceID)
+            class_name = args[0]
+            instance_id = args[1]
+            attribute_name = args[2]
+            attribute_value = args[3]
+            key = "{}.{}".format(class_name, instance_id)
             if key not in storage.all():
-                print("** no instance found **")
+                print(self.messagesValues['dontExistsID'])
             else:
                 objectAttribute = storage.all()[key]
-                if hasattr(objectAttribute, attributeName):
-                    setattr(objectAttribute, attributeName, attributeValue)
-                    storage.save()
-                else:
-                    print("** attribute doesn't exist **")
+                setattr(objectAttribute, attribute_name, attribute_value)
+                storage.save()
 
 
 if __name__ == '__main__':
