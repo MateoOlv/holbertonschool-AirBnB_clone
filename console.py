@@ -152,21 +152,27 @@ class HBNBCommand(cmd.Cmd):
                 break
 
     def print_missing_class(self, args):
+        """ print_missing_class function """
         print(self.messagesValues['missingClass'])
 
     def print_class_not_exists(self, args):
+        """ print_class_not_exists function """
         print(self.messagesValues['dontExistsClass'])
 
     def print_missing_id(self, args):
+        """ print_missing_idfunction """
         print(self.messagesValues['missingID'])
 
     def print_missing_attribute(self, args):
+        """ print_missing_attribute function """
         print(self.messagesValues['missingAttribute'])
 
     def print_missing_value(self, args):
+        """ print_missing_value function """
         print(self.messagesValues['missingValue'])
 
     def update_instance(self, args):
+        """ update_instance function """
         class_name = args[0]
         instance_id = args[1]
         attribute_name = args[2]
