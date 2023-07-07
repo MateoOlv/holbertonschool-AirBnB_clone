@@ -20,7 +20,10 @@ class BaseModel:
         if kwargs is not None:
             for key, value in kwargs.items():
                 if key != "__class__":
-                    setattr(self, key, value)
+                    if key == "update_at" or key == "created_at":
+                        value = datetime.strptime(
+                            value, "%Y-%m-%dT%H:%M:%S.%f")
+                        setattr(self, key, value)
 
     def __str__(self):
         """Str return"""
