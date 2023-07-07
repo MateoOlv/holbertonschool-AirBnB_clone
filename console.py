@@ -4,7 +4,7 @@ Command interpreter.
 Imports
 """
 import cmd
-from shlex import split
+from regex import split
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -12,8 +12,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
-from models.engine.file_storage import FileStorage
-storage = FileStorage()
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -131,7 +130,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             class_name = args[0]
             instances = storage.all()
-            filtered_instances = [str(instance) for key, instance in instances.items()]
+            filtered_instances = [str(elem) for key, elem in instances.items()]
             for strElement in filtered_instances:
                 print(strElement)
 
