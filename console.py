@@ -133,46 +133,21 @@ class HBNBCommand(cmd.Cmd):
                 print(i)
 
     def do_update(self, arg):
-        """
-            Updates an instance based on the class name and id by
-            adding or updating attribute saved the change into the JSON file.
-        """
         args = arg.split()
-        actions = {
-            (): self.print_missing_class,
-            (args[0] not in self.classes,): self.print_class_not_exists,
-            (len(args) == 1,): self.print_missing_id,
-            (len(args) == 2,): self.print_missing_attribute,
-            (len(args) == 3,): self.print_missing_value,
-            (True,): self.update_instance
-        }
-        for conditions, action in actions.items():
-            if all(conditions):
-                action(args)
-                break
+        if not arg:
+            print(self.messagesValues['missingClass'])
+        elif args[0] not in self.classes:
+            print(self.messagesValues['dontExistsClass'])
+        elif len(args) == 1:
+            print(self.messagesValues['missingID'])
+        elif len(args) == 2:
+            print(self.messagesValues['missingAttribute'])
+        elif len(args) == 3:
+            print(self.messagesValues['missingValue'])
+        else:
+            self.update_logic(args)
 
-    def print_missing_class(self, args):
-        """ print_missing_class function """
-        print(self.messagesValues['missingClass'])
-
-    def print_class_not_exists(self, args):
-        """ print_class_not_exists function """
-        print(self.messagesValues['dontExistsClass'])
-
-    def print_missing_id(self, args):
-        """ print_missing_idfunction """
-        print(self.messagesValues['missingID'])
-
-    def print_missing_attribute(self, args):
-        """ print_missing_attribute function """
-        print(self.messagesValues['missingAttribute'])
-
-    def print_missing_value(self, args):
-        """ print_missing_value function """
-        print(self.messagesValues['missingValue'])
-
-    def update_instance(self, args):
-        """ update_instance function """
+    def update_logic(self, args):
         class_name = args[0]
         instance_id = args[1]
         attribute_name = args[2]
