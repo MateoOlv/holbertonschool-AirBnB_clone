@@ -38,6 +38,8 @@ or
 ./console.py
 ```
 
+## Commands
+
 | Método    | Descripción                                                                                                                                                           |
 |-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | create    | Crea una nueva instancia de BaseModel, la guarda en el archivo JSON y muestra el id.                                                                                  |
@@ -46,6 +48,9 @@ or
 | all       | Imprime la representación en forma de cadena de todas las instancias, ya sea basadas en el nombre de la clase o no.                                                   |
 | update    | Actualiza una instancia basada en el nombre de la clase y el id añadiendo o actualizando un atributo (guarda el cambio en el archivo JSON).                            |
 
+<br>
+
+##Classes
 | Class name | Attributes                                                                                                 |
 |------------|-----------------------------------------------------------------------------------------------------------|
 | BaseModel  | created_at, updated_at, id                                                                                |
