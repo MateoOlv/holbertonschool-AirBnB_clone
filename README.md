@@ -42,11 +42,12 @@ or
 
 | Método    | Descripción                                                                                                                                                           |
 |-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| create    | Crea una nueva instancia de BaseModel, la guarda en el archivo JSON y muestra el id.                                                                                  |
-| show      | Imprime la representación en forma de cadena de una instancia basada en el nombre de la clase y el id.                                                                |
-| destroy   | Elimina una instancia basada en el nombre de la clase y el id (guarda el cambio en el archivo JSON).                                                                  |
-| all       | Imprime la representación en forma de cadena de todas las instancias, ya sea basadas en el nombre de la clase o no.                                                   |
-| update    | Actualiza una instancia basada en el nombre de la clase y el id añadiendo o actualizando un atributo (guarda el cambio en el archivo JSON).                            |
+| create    | Creates a new instance of BaseModel, saves it in the JSON file and displays the id.                                                                                   |
+| show      | Prints the string representation of an instance based on the class name and id.
+                    |                                                                
+| destroy   | Deletes an instance based on the class name and id (saves the change in the JSON file).                                                                               |
+| all       | Prints the string representation of all instances, whether based on the class name or not.                                                                            |
+| update    | Actualiza una instancia basada en el nombre de la clase y el id añadiendo o actualizando un atributo (guarda el cambio en el archivo JSON).                           |
 
 <br>
 
@@ -65,5 +66,5 @@ or
 
 ## Authors
 
-* **Jeremias Erba** - *Holberton Student* - [Jeremias Erba](https://github.com/JeremiasInCode/) - *Software development and team leadership.*
+* **Jeremias Erba** - *Holberton Student* - [Jeremias Erba](https://github.com/JeremiasInCode/) - *Software development.*
 * **Mateo Olivera** - *Holberton Student* - [Mateo Olivera](https://github.com/MateoOlv) - *Software Developer.*
