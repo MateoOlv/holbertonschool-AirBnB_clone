@@ -40,14 +40,13 @@ or
 
 ## Commands
 
-| Método    | Descripción                                                                                                                                                           |
-|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| create    | Creates a new instance of BaseModel, saves it in the JSON file and displays the id.                                                                                   |
-| show      | Prints the string representation of an instance based on the class name and id.
-                    |                                                                
-| destroy   | Deletes an instance based on the class name and id (saves the change in the JSON file).                                                                               |
-| all       | Prints the string representation of all instances, whether based on the class name or not.                                                                            |
-| update    | Actualiza una instancia basada en el nombre de la clase y el id añadiendo o actualizando un atributo (guarda el cambio en el archivo JSON).                           |
+| Método    | Descripción                                                                                                     |
+|-----------|-----------------------------------------------------------------------------------------------------------------|
+| create    | Creates a new instance of BaseModel, saves it in the JSON file and displays the id.                            |
+| show      | Prints the string representation of an instance based on the class name and id.                                 |
+| destroy   | Deletes an instance based on the class name and id (saves the change in the JSON file).                         |
+| all       | Prints the string representation of all instances, whether based on the class name or not.                      |
+| update    | Updates an instance based on the class name and id by adding or updating an attribute (saves the change in the JSON file). |
 
 <br>
 
