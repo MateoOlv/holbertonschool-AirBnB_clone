@@ -37,3 +37,22 @@ or
 ```
 ./console.py
 ```
+
+| Método    | Descripción                                                                                                                                                           |
+|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| create    | Crea una nueva instancia de BaseModel, la guarda en el archivo JSON y muestra el id.                                                                                  |
+| show      | Imprime la representación en forma de cadena de una instancia basada en el nombre de la clase y el id.                                                                |
+| destroy   | Elimina una instancia basada en el nombre de la clase y el id (guarda el cambio en el archivo JSON).                                                                  |
+| all       | Imprime la representación en forma de cadena de todas las instancias, ya sea basadas en el nombre de la clase o no.                                                   |
+| update    | Actualiza una instancia basada en el nombre de la clase y el id añadiendo o actualizando un atributo (guarda el cambio en el archivo JSON).                            |
+
+| Class name | Attributes                                                                                                 |
+|------------|-----------------------------------------------------------------------------------------------------------|
+| BaseModel  | created_at, updated_at, id                                                                                |
+| User       | first_name, last_name, email, password                                                                    |
+| State      | name, state_id                                                                                            |
+| City       | name                                                                                                      |
+| Amenity    | name                                                                                                      |
+| Place      | name, description, number_rooms, city_id, user_id, price_by_night, max_guest, number_bathrooms, longitude, latitude, amenity_ids |
+| Review     | place_id, user_id, text                                                                                    |
+
