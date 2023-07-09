@@ -50,7 +50,7 @@ or
 
 <br>
 
-##Classes
+## Classes
 | Class name | Attributes                                                                                                 |
 |------------|-----------------------------------------------------------------------------------------------------------|
 | BaseModel  | created_at, updated_at, id                                                                                |
@@ -61,3 +61,9 @@ or
 | Place      | name, description, number_rooms, city_id, user_id, price_by_night, max_guest, number_bathrooms, longitude, latitude, amenity_ids |
 | Review     | place_id, user_id, text                                                                                    |
 
+<br>
+
+## Authors
+
+* **Jeremias Erba** - *Holberton Student* - [Jeremias Erba](https://github.com/JeremiasInCode/) - *Software development and team leadership.*
+* **Mateo Olivera** - *Holberton Student* - [Mateo Olivera](https://github.com/MateoOlv) - *Software Developer.*
